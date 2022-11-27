@@ -1,0 +1,50 @@
+<div class="row text-center">
+  <h2 *ngIf="isAddMode">Add User</h2>
+  <h2 *ngIf="!isAddMode">Edit User</h2>
+</div>
+<div class="rounded-background">
+  <form
+    id="userForm"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="rounded-form"
+  >
+    <div class="mb-3 form-group">
+      <mat-form-field appearance="fill" [style.width.px]=1125 hideRequiredMarker="">
+        <mat-label>Username</mat-label>
+        <input formControlName = "username" matInput placeholder="Username">
+        <mat-error>
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mb-3 form-group">
+      <mat-form-field appearance="fill" [style.width.px]=1125 hideRequiredMarker="">
+        <mat-label>Name</mat-label>
+        <input formControlName = "name" matInput placeholder="Name">
+        <mat-error>
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="mb-3 form-group">
+      <mat-form-field appearance="fill" [style.width.px]=1125 hideRequiredMarker="">
+        <mat-label>Password</mat-label>
+        <input formControlName = "password" matInput placeholder="Password">
+        <mat-error>
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-success">
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm mr-1"
+        ></span>
+        Save
+      </button>
+      <a routerLink="/users" class="btn btn-link"><button mat-button disabled>Cancel</button></a>
+    </div>
+  </form>
+</div>
